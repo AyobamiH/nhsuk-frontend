@@ -1,0 +1,354 @@
+name: Test checkbox subpixel transform offsets
+
+on:
+  push:
+    branches:
+      - automation/test-checkbox-transform-offset-2076
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  experiment:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout clean contribution branch
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: fix/small-checkbox-checkmark-alignment-2076
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+
+      - name: Install Playwright Chromium
+        run: npm run install:playwright
+
+      - name: Build
+        run: npm run build
+
+      - name: Start review app
+        run: |
+          npm start --workspace @nhsuk/frontend-review \
+            > "$RUNNER_TEMP/review-app.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/review-app.pid"
+          npx wait-on \
+            http-get://127.0.0.1:3000/nhsuk-frontend/components/checkboxes/small-with-pre-checked-values/ \
+            --timeout 120000
+
+      - name: Capture transform variants at multiple display scales
+        run: |
+          mkdir -p .tmp "$RUNNER_TEMP/checkbox-transform-evidence"
+
+          cat > .tmp/capture-transform-evidence.mjs <<'JS'
+          import fs from "node:fs/promises"
+          import path from "node:path"
+          import { chromium } from "playwright-core"
+
+          const outputDir = process.env.EVIDENCE_DIR
+          const url =
+            "http://127.0.0.1:3000/nhsuk-frontend/components/" +
+            "checkboxes/small-with-pre-checked-values/"
+          const selector =
+            ".nhsuk-checkboxes--small .nhsuk-checkboxes__input:checked"
+          const baseTransform = "rotate(-45deg) translate(-50%, -50%)"
+          const variants = [
+            { name: "current", left: 15, transform: baseTransform },
+            { name: "left-14-5", left: 14.5, transform: baseTransform },
+            { name: "left-14", left: 14, transform: baseTransform },
+            {
+              name: "screen-x-minus-0-25",
+              left: 15,
+              transform:
+                "translateX(-0.25px) rotate(-45deg) translate(-50%, -50%)"
+            },
+            {
+              name: "screen-x-minus-0-5",
+              left: 15,
+              transform:
+                "translateX(-0.5px) rotate(-45deg) translate(-50%, -50%)"
+            },
+            {
+              name: "screen-x-minus-0-75",
+              left: 15,
+              transform:
+                "translateX(-0.75px) rotate(-45deg) translate(-50%, -50%)"
+            },
+            {
+              name: "screen-x-minus-1",
+              left: 15,
+              transform:
+                "translateX(-1px) rotate(-45deg) translate(-50%, -50%)"
+            },
+            {
+              name: "local-x-minus-0-5",
+              left: 15,
+              transform:
+                "rotate(-45deg) translate(-50%, -50%) translateX(-0.5px)"
+            }
+          ]
+          const scaleFactors = [1, 1.25, 1.5, 2]
+
+          await fs.mkdir(outputDir, { recursive: true })
+          const browser = await chromium.launch({
+            headless: true,
+            args: [
+              "--disable-skia-graphite",
+              "--disable-skia-runtime-opts",
+              "--font-render-hinting=medium"
+            ]
+          })
+          const records = []
+
+          try {
+            for (const deviceScaleFactor of scaleFactors) {
+              const context = await browser.newContext({
+                deviceScaleFactor,
+                viewport: { width: 1200, height: 800 }
+              })
+              const page = await context.newPage()
+              await page.goto(url, { waitUntil: "networkidle" })
+              const input = page.locator(selector).first()
+              if ((await input.count()) !== 1) {
+                throw new Error(`Expected one checked small checkbox at ${url}`)
+              }
+              await input.focus()
+              const inputBox = await input.boundingBox()
+              if (!inputBox) {
+                throw new Error("Small checkbox input has no bounding box")
+              }
+
+              for (const variant of variants) {
+                await page.evaluate(({ left, transform }) => {
+                  let style = document.querySelector("#alignment-experiment")
+                  if (!style) {
+                    style = document.createElement("style")
+                    style.id = "alignment-experiment"
+                    document.head.append(style)
+                  }
+                  style.textContent = `
+                    .nhsuk-checkboxes--small
+                    .nhsuk-checkboxes__label::after {
+                      left: ${left}px !important;
+                      transform: ${transform} !important;
+                      border-color: #e60000 !important;
+                    }
+                  `
+                }, variant)
+                await page.evaluate(() => new Promise(requestAnimationFrame))
+
+                const filename =
+                  `dpr-${String(deviceScaleFactor).replace(".", "-")}-` +
+                  `${variant.name}.png`
+                await page.screenshot({
+                  path: path.join(outputDir, filename),
+                  clip: {
+                    x: Math.max(0, Math.floor(inputBox.x)),
+                    y: Math.max(0, Math.floor(inputBox.y)),
+                    width: Math.ceil(inputBox.width),
+                    height: Math.ceil(inputBox.height)
+                  }
+                })
+                records.push({
+                  deviceScaleFactor,
+                  filename,
+                  left: variant.left,
+                  name: variant.name,
+                  transform: variant.transform
+                })
+              }
+              await context.close()
+            }
+          } finally {
+            await browser.close()
+          }
+
+          await fs.writeFile(
+            path.join(outputDir, "records.json"),
+            JSON.stringify(records, null, 2)
+          )
+          JS
+
+          EVIDENCE_DIR="$RUNNER_TEMP/checkbox-transform-evidence" \
+            node .tmp/capture-transform-evidence.mjs
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Analyse raster changes
+        run: |
+          python -m pip install pillow
+
+          cat > .tmp/analyse-transform-evidence.py <<'PY'
+          import json
+          import os
+          from collections import defaultdict
+          from pathlib import Path
+
+          from PIL import Image, ImageChops, ImageDraw
+
+          evidence_dir = Path(os.environ["EVIDENCE_DIR"])
+          records = json.loads((evidence_dir / "records.json").read_text())
+          images = {
+              (record["deviceScaleFactor"], record["name"]): Image.open(
+                  evidence_dir / record["filename"]
+              ).convert("RGB")
+              for record in records
+          }
+
+          def red_metrics(image):
+              points = []
+              for y in range(image.height):
+                  for x in range(image.width):
+                      red, green, blue = image.getpixel((x, y))
+                      if red > 180 and green < 120 and blue < 120:
+                          points.append((x, y))
+              if not points:
+                  raise RuntimeError("No red check-mark pixels found")
+              xs = [x for x, _ in points]
+              ys = [y for _, y in points]
+              return {
+                  "bbox": [min(xs), min(ys), max(xs), max(ys)],
+                  "centroid_x": sum(xs) / len(xs),
+                  "centroid_y": sum(ys) / len(ys),
+                  "pixels": len(points),
+              }
+
+          results = []
+          variants = []
+          for record in records:
+              if record["name"] not in variants:
+                  variants.append(record["name"])
+
+          for factor in sorted({record["deviceScaleFactor"] for record in records}):
+              baseline = images[(factor, "current")]
+              baseline_red = red_metrics(baseline)
+              for variant in variants:
+                  image = images[(factor, variant)]
+                  metrics = red_metrics(image)
+                  diff = ImageChops.difference(baseline, image)
+                  changed = sum(
+                      1
+                      for pixel in diff.getdata()
+                      if pixel != (0, 0, 0)
+                  )
+                  results.append(
+                      {
+                          "deviceScaleFactor": factor,
+                          "variant": variant,
+                          "changed_pixels_vs_current": changed,
+                          "red_bbox": metrics["bbox"],
+                          "red_centroid_shift_x_device_pixels": (
+                              metrics["centroid_x"] - baseline_red["centroid_x"]
+                          ),
+                          "red_centroid_shift_x_css_pixels": (
+                              metrics["centroid_x"] - baseline_red["centroid_x"]
+                          ) / factor,
+                          "red_pixel_count": metrics["pixels"],
+                      }
+                  )
+
+          summary_by_variant = defaultdict(dict)
+          for result in results:
+              summary_by_variant[result["variant"]][
+                  str(result["deviceScaleFactor"])
+              ] = {
+                  "changed_pixels": result["changed_pixels_vs_current"],
+                  "shift_css_pixels": result[
+                      "red_centroid_shift_x_css_pixels"
+                  ],
+              }
+
+          output = {
+              "results": results,
+              "summary_by_variant": summary_by_variant,
+          }
+          (evidence_dir / "metrics.json").write_text(
+              json.dumps(output, indent=2), encoding="utf-8"
+          )
+
+          factors = [1, 1.25, 1.5, 2]
+          cell_width = max(image.width for image in images.values()) + 30
+          cell_height = max(image.height for image in images.values()) + 38
+          canvas = Image.new(
+              "RGB",
+              (cell_width * len(variants), cell_height * len(factors)),
+              "white",
+          )
+          draw = ImageDraw.Draw(canvas)
+          lookup = {
+              (result["deviceScaleFactor"], result["variant"]): result
+              for result in results
+          }
+
+          for row, factor in enumerate(factors):
+              for column, variant in enumerate(variants):
+                  image = images[(factor, variant)]
+                  x = column * cell_width + 12
+                  y = row * cell_height + 12
+                  canvas.paste(image, (x, y))
+                  result = lookup[(factor, variant)]
+                  label = (
+                      f"DPR {factor} {variant}\n"
+                      f"diff {result['changed_pixels_vs_current']} "
+                      f"shift {result['red_centroid_shift_x_css_pixels']:+.2f}px"
+                  )
+                  draw.multiline_text(
+                      (column * cell_width + 2, y + image.height + 3),
+                      label,
+                      fill="black",
+                      spacing=1,
+                  )
+
+          canvas.save(evidence_dir / "transform-offset-comparison.png")
+
+          markdown = [
+              "# Checkbox transform offset experiment",
+              "",
+              "Each cell reports changed pixels versus the current +1px rule and "
+              "the red check-mark centroid shift in CSS pixels.",
+              "",
+              "```json",
+              json.dumps(summary_by_variant, indent=2),
+              "```",
+              "",
+          ]
+          (evidence_dir / "summary.md").write_text(
+              "\n".join(markdown), encoding="utf-8"
+          )
+          print(json.dumps(output, indent=2))
+          PY
+
+          EVIDENCE_DIR="$RUNNER_TEMP/checkbox-transform-evidence" \
+            python .tmp/analyse-transform-evidence.py
+
+      - name: Stop review app
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/review-app.pid"; then
+            kill "$(cat "$RUNNER_TEMP/review-app.pid")" || true
+          fi
+
+      - name: Upload experiment evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-transform-offset-evidence
+          path: ${{ runner.temp }}/checkbox-transform-evidence
+          if-no-files-found: error
+
+      - name: Cleanup
+        if: always()
+        run: rm -rf .tmp
