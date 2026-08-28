@@ -306,7 +306,7 @@ $nhsuk-checkboxes-offset: $nhsuk-border-width-form-element;
       $check-mark-height: nhsuk-px-to-rem(6px);
 
       top: $check-mark-height + $input-offset - nhsuk-px-to-rem(0.5px);
-      left: $check-mark-width + nhsuk-px-to-rem($nhsuk-checkboxes-offset + 1px);
+      left: $check-mark-width + nhsuk-px-to-rem($nhsuk-checkboxes-offset + 0.5px);
       width: $check-mark-width;
       height: $check-mark-height;
       border-width: 0 0 nhsuk-px-to-rem(3px) nhsuk-px-to-rem(3px);
