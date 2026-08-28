@@ -1,0 +1,324 @@
+name: Validate checkbox alignment across display scales v2
+
+on:
+  push:
+    branches:
+      - automation/validate-checkbox-dpi-2076-v2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout clean contribution branch
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: fix/small-checkbox-checkmark-alignment-2076
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+
+      - name: Install Playwright Chromium
+        run: npm run install:playwright
+
+      - name: Build
+        run: npm run build
+
+      - name: Start review app
+        run: |
+          npm start --workspace @nhsuk/frontend-review \
+            > "$RUNNER_TEMP/review-app.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/review-app.pid"
+          npx wait-on \
+            http-get://127.0.0.1:3000/nhsuk-frontend/components/checkboxes/small-with-pre-checked-values/ \
+            --timeout 120000
+
+      - name: Capture focused small checkbox at multiple scale factors
+        run: |
+          mkdir -p .tmp "$RUNNER_TEMP/checkbox-evidence"
+
+          cat > .tmp/capture-checkbox-evidence.mjs <<'JS'
+          import fs from "node:fs/promises"
+          import path from "node:path"
+          import { chromium } from "playwright-core"
+
+          const outputDir = process.env.EVIDENCE_DIR
+          const url =
+            "http://127.0.0.1:3000/nhsuk-frontend/components/" +
+            "checkboxes/small-with-pre-checked-values/"
+          const selector =
+            ".nhsuk-checkboxes--small .nhsuk-checkboxes__input:checked"
+          const variants = [
+            { name: "current-15", left: 15 },
+            { name: "candidate-14-5", left: 14.5 },
+            { name: "no-adjustment-14", left: 14 },
+            { name: "minus-half-13-5", left: 13.5 }
+          ]
+          const scaleFactors = [1, 1.25, 1.5, 2]
+
+          await fs.mkdir(outputDir, { recursive: true })
+
+          const browser = await chromium.launch({
+            headless: true,
+            args: [
+              "--disable-skia-graphite",
+              "--disable-skia-runtime-opts",
+              "--font-render-hinting=medium"
+            ]
+          })
+          const records = []
+
+          try {
+            for (const deviceScaleFactor of scaleFactors) {
+              const context = await browser.newContext({
+                deviceScaleFactor,
+                viewport: { width: 1200, height: 800 }
+              })
+              const page = await context.newPage()
+              await page.goto(url, { waitUntil: "networkidle" })
+
+              const input = page.locator(selector).first()
+              if ((await input.count()) !== 1) {
+                throw new Error(`Expected one checked small checkbox at ${url}`)
+              }
+              await input.focus()
+              const inputBox = await input.boundingBox()
+              if (!inputBox) {
+                throw new Error("Small checkbox input has no bounding box")
+              }
+
+              for (const variant of variants) {
+                await page.evaluate(({ left }) => {
+                  let style = document.querySelector("#alignment-evidence")
+                  if (!style) {
+                    style = document.createElement("style")
+                    style.id = "alignment-evidence"
+                    document.head.append(style)
+                  }
+                  style.textContent = `
+                    .nhsuk-checkboxes--small
+                    .nhsuk-checkboxes__label::after {
+                      left: ${left}px !important;
+                      border-color: #e60000 !important;
+                    }
+                  `
+                }, variant)
+                await page.evaluate(() => new Promise(requestAnimationFrame))
+
+                const filename =
+                  `dpr-${String(deviceScaleFactor).replace(".", "-")}-` +
+                  `${variant.name}.png`
+                await page.screenshot({
+                  path: path.join(outputDir, filename),
+                  clip: {
+                    x: Math.max(0, Math.floor(inputBox.x)),
+                    y: Math.max(0, Math.floor(inputBox.y)),
+                    width: Math.ceil(inputBox.width),
+                    height: Math.ceil(inputBox.height)
+                  }
+                })
+                records.push({
+                  deviceScaleFactor,
+                  filename,
+                  left: variant.left,
+                  variant: variant.name
+                })
+              }
+              await context.close()
+            }
+          } finally {
+            await browser.close()
+          }
+
+          await fs.writeFile(
+            path.join(outputDir, "capture-records.json"),
+            JSON.stringify(records, null, 2)
+          )
+          JS
+
+          EVIDENCE_DIR="$RUNNER_TEMP/checkbox-evidence" \
+            node .tmp/capture-checkbox-evidence.mjs
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Measure horizontal alignment
+        run: |
+          python -m pip install pillow
+
+          cat > .tmp/analyse-checkbox-evidence.py <<'PY'
+          import json
+          import os
+          from collections import defaultdict
+          from pathlib import Path
+
+          from PIL import Image, ImageDraw
+
+          evidence_dir = Path(os.environ["EVIDENCE_DIR"])
+          records = json.loads(
+              (evidence_dir / "capture-records.json").read_text(encoding="utf-8")
+          )
+          metrics = []
+          images = {}
+
+          for record in records:
+              image = Image.open(evidence_dir / record["filename"]).convert("RGB")
+              images[(record["deviceScaleFactor"], record["variant"])] = image
+              red = []
+              dark = []
+
+              for y in range(image.height):
+                  for x in range(image.width):
+                      red_value, green, blue = image.getpixel((x, y))
+                      if red_value > 180 and green < 120 and blue < 120:
+                          red.append((x, y))
+                      if red_value < 80 and green < 90 and blue < 100:
+                          dark.append((x, y))
+
+              if not red or not dark:
+                  raise SystemExit(f"Could not segment {record['filename']}")
+
+              def bbox(points):
+                  xs = [point[0] for point in points]
+                  ys = [point[1] for point in points]
+                  return [min(xs), min(ys), max(xs), max(ys)]
+
+              red_bbox = bbox(red)
+              dark_bbox = bbox(dark)
+              red_center = (red_bbox[0] + red_bbox[2]) / 2
+              checkbox_center = (dark_bbox[0] + dark_bbox[2]) / 2
+              error_device_pixels = red_center - checkbox_center
+              error_css_pixels = (
+                  error_device_pixels / record["deviceScaleFactor"]
+              )
+              metrics.append(
+                  {
+                      **record,
+                      "checkbox_bbox": dark_bbox,
+                      "checkmark_bbox": red_bbox,
+                      "horizontal_error_css_pixels": error_css_pixels,
+                      "horizontal_error_device_pixels": error_device_pixels,
+                  }
+              )
+
+          grouped = defaultdict(list)
+          for metric in metrics:
+              grouped[metric["variant"]].append(
+                  abs(metric["horizontal_error_css_pixels"])
+              )
+          means = {
+              variant: sum(values) / len(values)
+              for variant, values in grouped.items()
+          }
+
+          result = {
+              "mean_absolute_horizontal_error_css_pixels": means,
+              "measurements": metrics,
+          }
+          (evidence_dir / "metrics.json").write_text(
+              json.dumps(result, indent=2), encoding="utf-8"
+          )
+
+          variants = [
+              "current-15",
+              "candidate-14-5",
+              "no-adjustment-14",
+              "minus-half-13-5",
+          ]
+          factors = [1, 1.25, 1.5, 2]
+          cell_width = max(image.width for image in images.values()) + 42
+          cell_height = max(image.height for image in images.values()) + 44
+          canvas = Image.new(
+              "RGB",
+              (cell_width * len(variants), cell_height * len(factors)),
+              "white",
+          )
+          draw = ImageDraw.Draw(canvas)
+          lookup = {
+              (metric["deviceScaleFactor"], metric["variant"]): metric
+              for metric in metrics
+          }
+
+          for row, factor in enumerate(factors):
+              for column, variant in enumerate(variants):
+                  image = images[(factor, variant)]
+                  x = column * cell_width + 18
+                  y = row * cell_height + 18
+                  canvas.paste(image, (x, y))
+                  metric = lookup[(factor, variant)]
+                  label = (
+                      f"DPR {factor} {variant} "
+                      f"{metric['horizontal_error_css_pixels']:+.2f}px"
+                  )
+                  draw.text(
+                      (column * cell_width + 4, y + image.height + 6),
+                      label,
+                      fill="black",
+                  )
+
+          canvas.save(evidence_dir / "checkbox-alignment-comparison.png")
+
+          summary = [
+              "# Small checkbox multi-DPI alignment evidence",
+              "",
+              "| Variant | Mean absolute horizontal error (CSS px) |",
+              "| --- | ---: |",
+          ]
+          for variant in variants:
+              summary.append(f"| `{variant}` | {means[variant]:.3f} |")
+          summary.extend(
+              [
+                  "",
+                  "Measured from the red check-mark bounding-box centre to the "
+                  "focused checkbox border centre at DPR 1, 1.25, 1.5 and 2.",
+                  "",
+              ]
+          )
+          (evidence_dir / "summary.md").write_text(
+              "\n".join(summary), encoding="utf-8"
+          )
+          print(json.dumps(result, indent=2))
+          PY
+
+          EVIDENCE_DIR="$RUNNER_TEMP/checkbox-evidence" \
+            python .tmp/analyse-checkbox-evidence.py
+
+      - name: Stop review app
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/review-app.pid"; then
+            kill "$(cat "$RUNNER_TEMP/review-app.pid")" || true
+          fi
+
+      - name: Run repository visual regression suite
+        run: npm run test:visual --ignore-scripts
+
+      - name: Upload multi-DPI evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-alignment-dpi-evidence
+          path: ${{ runner.temp }}/checkbox-evidence
+          if-no-files-found: error
+
+      - name: Cleanup temporary scripts
+        if: always()
+        run: rm -rf .tmp
+
+      - name: Confirm clean tracked state
+        run: test -z "$(git status --porcelain --untracked-files=no)"
