@@ -17,3 +17,5 @@ Candidate result: **PASS**
 The WebKit result is an approximation of Safari. DPR values are browser-context emulation on the named operating system, not proof of physical monitor scaling.
 The 200% text-size scenario changes the root font size from 16px to 32px so the rem-based correction is evaluated under text resizing.
 Forced-colours screenshots and computed-style records verify that the selected mark remains rendered.
+The pre-v10.6 rule is retained as a historical control but excluded from eligible fixes because restoring it would reverse the transform-based Windows 125% correction from #2051.
+The candidate must be the best eligible fix and remain within 0.05 CSS pixels mean error of the historical control.
