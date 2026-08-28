@@ -1,0 +1,322 @@
+name: Test checkbox alignment in Chromium and WebKit
+
+on:
+  push:
+    branches:
+      - automation/test-checkbox-cross-browser-2076
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout support branch
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: support/10.x
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+
+      - name: Install Chromium and WebKit
+        run: |
+          npm run install:playwright
+          npx playwright install webkit
+
+      - name: Build
+        run: npm run build
+
+      - name: Start review app
+        run: |
+          npm start --workspace @nhsuk/frontend-review \
+            > "$RUNNER_TEMP/review-app.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/review-app.pid"
+          npx wait-on \
+            http-get://127.0.0.1:3000/nhsuk-frontend/components/checkboxes/small-with-pre-checked-values/ \
+            --timeout 120000
+
+      - name: Capture current and candidate rendering
+        run: |
+          mkdir -p .tmp "$RUNNER_TEMP/checkbox-cross-browser-evidence"
+
+          cat > .tmp/capture-cross-browser.mjs <<'JS'
+          import fs from "node:fs/promises"
+          import path from "node:path"
+          import { chromium, webkit } from "playwright-core"
+
+          const outputDir = process.env.EVIDENCE_DIR
+          const url =
+            "http://127.0.0.1:3000/nhsuk-frontend/components/" +
+            "checkboxes/small-with-pre-checked-values/"
+          const selector =
+            ".nhsuk-checkboxes--small .nhsuk-checkboxes__input:checked"
+          const variants = [
+            {
+              name: "current",
+              transform: "rotate(-45deg) translate(-50%, -50%)"
+            },
+            {
+              name: "candidate",
+              transform:
+                "translateX(-0.5px) rotate(-45deg) translate(-50%, -50%)"
+            }
+          ]
+          const scaleFactors = [1, 1.25, 1.5, 2]
+          const engines = [
+            { name: "chromium", type: chromium },
+            { name: "webkit", type: webkit }
+          ]
+
+          await fs.mkdir(outputDir, { recursive: true })
+          const records = []
+
+          for (const engine of engines) {
+            const browser = await engine.type.launch({ headless: true })
+            try {
+              for (const deviceScaleFactor of scaleFactors) {
+                const context = await browser.newContext({
+                  deviceScaleFactor,
+                  viewport: { width: 1200, height: 800 }
+                })
+                const page = await context.newPage()
+                await page.goto(url, { waitUntil: "networkidle" })
+                const input = page.locator(selector).first()
+                if ((await input.count()) !== 1) {
+                  throw new Error(
+                    `Expected one checked small checkbox in ${engine.name}`
+                  )
+                }
+                await input.focus()
+                const inputBox = await input.boundingBox()
+                if (!inputBox) {
+                  throw new Error("Small checkbox input has no bounding box")
+                }
+
+                for (const variant of variants) {
+                  await page.evaluate(({ transform }) => {
+                    let style = document.querySelector("#alignment-evidence")
+                    if (!style) {
+                      style = document.createElement("style")
+                      style.id = "alignment-evidence"
+                      document.head.append(style)
+                    }
+                    style.textContent = `
+                      .nhsuk-checkboxes--small
+                      .nhsuk-checkboxes__label::after {
+                        left: 15px !important;
+                        transform: ${transform} !important;
+                        border-color: #e60000 !important;
+                      }
+                    `
+                  }, variant)
+                  await page.evaluate(() => new Promise(requestAnimationFrame))
+
+                  const filename =
+                    `${engine.name}-dpr-` +
+                    `${String(deviceScaleFactor).replace(".", "-")}-` +
+                    `${variant.name}.png`
+                  await page.screenshot({
+                    path: path.join(outputDir, filename),
+                    clip: {
+                      x: Math.max(0, Math.floor(inputBox.x)),
+                      y: Math.max(0, Math.floor(inputBox.y)),
+                      width: Math.ceil(inputBox.width),
+                      height: Math.ceil(inputBox.height)
+                    }
+                  })
+                  records.push({
+                    browser: engine.name,
+                    deviceScaleFactor,
+                    filename,
+                    variant: variant.name
+                  })
+                }
+                await context.close()
+              }
+            } finally {
+              await browser.close()
+            }
+          }
+
+          await fs.writeFile(
+            path.join(outputDir, "records.json"),
+            JSON.stringify(records, null, 2)
+          )
+          JS
+
+          EVIDENCE_DIR="$RUNNER_TEMP/checkbox-cross-browser-evidence" \
+            node .tmp/capture-cross-browser.mjs
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Analyse cross-browser movement
+        run: |
+          python -m pip install pillow
+
+          cat > .tmp/analyse-cross-browser.py <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          from PIL import Image, ImageChops, ImageDraw
+
+          evidence_dir = Path(os.environ["EVIDENCE_DIR"])
+          records = json.loads((evidence_dir / "records.json").read_text())
+          images = {
+              (record["browser"], record["deviceScaleFactor"], record["variant"]):
+              Image.open(evidence_dir / record["filename"]).convert("RGB")
+              for record in records
+          }
+
+          def red_centroid(image):
+              points = []
+              for y in range(image.height):
+                  for x in range(image.width):
+                      red, green, blue = image.getpixel((x, y))
+                      if red > 180 and green < 120 and blue < 120:
+                          points.append((x, y))
+              if not points:
+                  raise RuntimeError("No red check-mark pixels found")
+              return (
+                  sum(x for x, _ in points) / len(points),
+                  sum(y for _, y in points) / len(points),
+                  len(points),
+              )
+
+          results = []
+          for browser in ["chromium", "webkit"]:
+              for factor in [1, 1.25, 1.5, 2]:
+                  current = images[(browser, factor, "current")]
+                  candidate = images[(browser, factor, "candidate")]
+                  current_x, current_y, current_count = red_centroid(current)
+                  candidate_x, candidate_y, candidate_count = red_centroid(candidate)
+                  difference = ImageChops.difference(current, candidate)
+                  changed_pixels = sum(
+                      1 for pixel in difference.getdata() if pixel != (0, 0, 0)
+                  )
+                  results.append(
+                      {
+                          "browser": browser,
+                          "deviceScaleFactor": factor,
+                          "changed_pixels": changed_pixels,
+                          "horizontal_shift_device_pixels": candidate_x - current_x,
+                          "horizontal_shift_css_pixels": (
+                              candidate_x - current_x
+                          ) / factor,
+                          "vertical_shift_css_pixels": (
+                              candidate_y - current_y
+                          ) / factor,
+                          "current_red_pixels": current_count,
+                          "candidate_red_pixels": candidate_count,
+                      }
+                  )
+
+          for result in results:
+              if result["changed_pixels"] <= 0:
+                  raise SystemExit(
+                      f"Candidate produced no raster change: {result}"
+                  )
+              if result["horizontal_shift_css_pixels"] >= 0:
+                  raise SystemExit(
+                      f"Candidate did not move left: {result}"
+                  )
+
+          (evidence_dir / "metrics.json").write_text(
+              json.dumps(results, indent=2), encoding="utf-8"
+          )
+
+          browsers = ["chromium", "webkit"]
+          factors = [1, 1.25, 1.5, 2]
+          cell_width = max(image.width for image in images.values()) + 38
+          cell_height = max(image.height for image in images.values()) + 38
+          canvas = Image.new(
+              "RGB",
+              (cell_width * 2, cell_height * len(browsers) * len(factors)),
+              "white",
+          )
+          draw = ImageDraw.Draw(canvas)
+          lookup = {
+              (result["browser"], result["deviceScaleFactor"]): result
+              for result in results
+          }
+
+          row = 0
+          for browser in browsers:
+              for factor in factors:
+                  result = lookup[(browser, factor)]
+                  for column, variant in enumerate(["current", "candidate"]):
+                      image = images[(browser, factor, variant)]
+                      x = column * cell_width + 12
+                      y = row * cell_height + 12
+                      canvas.paste(image, (x, y))
+                      label = f"{browser} DPR {factor} {variant}"
+                      if variant == "candidate":
+                          label += (
+                              f" shift "
+                              f"{result['horizontal_shift_css_pixels']:+.2f}px"
+                          )
+                      draw.text(
+                          (column * cell_width + 3, y + image.height + 4),
+                          label,
+                          fill="black",
+                      )
+                  row += 1
+
+          canvas.save(evidence_dir / "cross-browser-comparison.png")
+
+          lines = [
+              "# Chromium and WebKit checkbox alignment evidence",
+              "",
+              "| Browser | DPR | Changed pixels | Horizontal shift (CSS px) |",
+              "| --- | ---: | ---: | ---: |",
+          ]
+          for result in results:
+              lines.append(
+                  f"| {result['browser']} | {result['deviceScaleFactor']} | "
+                  f"{result['changed_pixels']} | "
+                  f"{result['horizontal_shift_css_pixels']:.3f} |"
+              )
+          lines.append("")
+          (evidence_dir / "summary.md").write_text(
+              "\n".join(lines), encoding="utf-8"
+          )
+          print(json.dumps(results, indent=2))
+          PY
+
+          EVIDENCE_DIR="$RUNNER_TEMP/checkbox-cross-browser-evidence" \
+            python .tmp/analyse-cross-browser.py
+
+      - name: Stop review app
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/review-app.pid"; then
+            kill "$(cat "$RUNNER_TEMP/review-app.pid")" || true
+          fi
+
+      - name: Upload cross-browser evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-cross-browser-evidence
+          path: ${{ runner.temp }}/checkbox-cross-browser-evidence
+          if-no-files-found: error
+
+      - name: Cleanup
+        if: always()
+        run: rm -rf .tmp
