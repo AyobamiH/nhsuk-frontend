@@ -40,6 +40,15 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Upload built review app for Windows rendering
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-review-app-build
+          path: |
+            packages/nhsuk-frontend/dist
+            packages/nhsuk-frontend-review/dist
+          if-no-files-found: error
+
       - name: Start review app
         run: |
           npm start --workspace @nhsuk/frontend-review > "$RUNNER_TEMP/review-app.log" 2>&1 &
@@ -80,6 +89,8 @@ jobs:
           if-no-files-found: error
 
   windows-browsers:
+    if: always()
+    needs: macos-browsers
     runs-on: windows-latest
     defaults:
       run:
@@ -98,8 +109,11 @@ jobs:
         env:
           PUPPETEER_SKIP_DOWNLOAD: true
 
-      - name: Build
-        run: npm run build
+      - name: Download review app built on macOS
+        uses: actions/download-artifact@v8
+        with:
+          name: checkbox-review-app-build
+          path: .
 
       - name: Start review app
         run: |
