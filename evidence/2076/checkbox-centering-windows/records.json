@@ -1,0 +1,506 @@
+[
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125"
+  }
+]

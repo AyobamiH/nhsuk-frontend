@@ -1,0 +1,1658 @@
+[
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      19,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-default-text-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      36,
+      33
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      23,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      23,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      36,
+      33
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-chrome-default-text-dpr-1-25-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      28,
+      26,
+      45,
+      40
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.6666666666666666,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      45,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.3333333333333333,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-chrome-default-text-dpr-1-5-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.25,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      35,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.25,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-default-text-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 1,
+    "filename": "windows-chrome-text-200-percent-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      59,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      71,
+      68,
+      120,
+      108
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      74,
+      66,
+      122,
+      107
+    ],
+    "horizontal_error_device_pixels": 2.5,
+    "horizontal_error_css_pixels": 1.25,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      73,
+      66,
+      122,
+      107
+    ],
+    "horizontal_error_device_pixels": 2.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      73,
+      66,
+      121,
+      107
+    ],
+    "horizontal_error_device_pixels": 1.5,
+    "horizontal_error_css_pixels": 0.75,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      72,
+      66,
+      121,
+      107
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-chrome",
+    "deviceScaleFactor": 2,
+    "filename": "windows-chrome-text-200-percent-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      72,
+      66,
+      120,
+      107
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.25,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      19,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-default-text-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      36,
+      33
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      23,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      23,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      36,
+      33
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.25,
+    "filename": "windows-edge-default-text-dpr-1-25-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      28,
+      26,
+      45,
+      40
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.6666666666666666,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      45,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.3333333333333333,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1.5,
+    "filename": "windows-edge-default-text-dpr-1-5-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.25,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      35,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.25,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-default-text-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 1,
+    "filename": "windows-edge-text-200-percent-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      59,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      71,
+      68,
+      120,
+      108
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      74,
+      66,
+      122,
+      107
+    ],
+    "horizontal_error_device_pixels": 2.5,
+    "horizontal_error_css_pixels": 1.25,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      73,
+      66,
+      122,
+      107
+    ],
+    "horizontal_error_device_pixels": 2.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      73,
+      66,
+      121,
+      107
+    ],
+    "horizontal_error_device_pixels": 1.5,
+    "horizontal_error_css_pixels": 0.75,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      72,
+      66,
+      121,
+      107
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "windows-edge",
+    "deviceScaleFactor": 2,
+    "filename": "windows-edge-text-200-percent-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      72,
+      66,
+      120,
+      107
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.25,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  }
+]

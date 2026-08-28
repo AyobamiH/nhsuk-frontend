@@ -1,0 +1,8 @@
+{
+  "candidate": "candidate-rem-minus-0.03125",
+  "candidate_is_best_or_tied": true,
+  "candidate_improves_current": true,
+  "candidate_max_error_within_half_css_pixel": true,
+  "forced_colours_check_mark_remains_rendered": true,
+  "pass": true
+}

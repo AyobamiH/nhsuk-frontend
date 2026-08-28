@@ -1,0 +1,38 @@
+[
+  {
+    "variant": "legacy-pre-v10.6",
+    "mean_absolute_horizontal_error_css_pixels": 0.06111111111111111,
+    "max_absolute_horizontal_error_css_pixels": 0.4,
+    "sample_count": 12
+  },
+  {
+    "variant": "candidate-rem-minus-0.03125",
+    "mean_absolute_horizontal_error_css_pixels": 0.10277777777777777,
+    "max_absolute_horizontal_error_css_pixels": 0.4,
+    "sample_count": 12
+  },
+  {
+    "variant": "fixed-minus-0.5px",
+    "mean_absolute_horizontal_error_css_pixels": 0.26944444444444443,
+    "max_absolute_horizontal_error_css_pixels": 0.75,
+    "sample_count": 12
+  },
+  {
+    "variant": "fixed-minus-0.75px",
+    "mean_absolute_horizontal_error_css_pixels": 0.30833333333333335,
+    "max_absolute_horizontal_error_css_pixels": 0.8,
+    "sample_count": 12
+  },
+  {
+    "variant": "fixed-minus-0.25px",
+    "mean_absolute_horizontal_error_css_pixels": 0.49166666666666664,
+    "max_absolute_horizontal_error_css_pixels": 1.0,
+    "sample_count": 12
+  },
+  {
+    "variant": "current",
+    "mean_absolute_horizontal_error_css_pixels": 0.6861111111111111,
+    "max_absolute_horizontal_error_css_pixels": 1.25,
+    "sample_count": 12
+  }
+]

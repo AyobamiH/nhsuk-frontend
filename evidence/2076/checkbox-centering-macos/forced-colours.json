@@ -1,0 +1,26 @@
+[
+  {
+    "browser": "macos-chromium",
+    "filename": "macos-chromium-forced-colours-candidate.png",
+    "borderBottomColor": "rgb(0, 0, 0)",
+    "borderBottomStyle": "solid",
+    "borderBottomWidth": "3px",
+    "borderLeftColor": "rgb(0, 0, 0)",
+    "borderLeftStyle": "solid",
+    "borderLeftWidth": "3px",
+    "opacity": "1",
+    "transform": "matrix(0.707107, -0.707107, 0.707107, 0.707107, -6.86396, 2.12132)"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "filename": "macos-webkit-approximation-forced-colours-candidate.png",
+    "borderBottomColor": "rgb(33, 43, 50)",
+    "borderBottomStyle": "solid",
+    "borderBottomWidth": "3px",
+    "borderLeftColor": "rgb(33, 43, 50)",
+    "borderLeftStyle": "solid",
+    "borderLeftWidth": "3px",
+    "opacity": "1",
+    "transform": "matrix(0.707107, -0.707107, 0.707107, 0.707107, -6.863961, 2.12132)"
+  }
+]

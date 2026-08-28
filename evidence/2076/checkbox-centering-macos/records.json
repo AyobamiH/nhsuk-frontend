@@ -1,0 +1,506 @@
+[
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-current.png",
+    "scenario": "default-text",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px"
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125"
+  }
+]
