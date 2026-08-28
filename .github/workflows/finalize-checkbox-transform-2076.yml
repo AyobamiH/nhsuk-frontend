@@ -83,6 +83,9 @@ jobs:
         env:
           PUPPETEER_SKIP_DOWNLOAD: true
 
+      - name: Apply repository CSS ordering
+        run: npm run lint:css:fix
+
       - name: Format changed files
         run: npx prettier --write CHANGELOG.md packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss
 
