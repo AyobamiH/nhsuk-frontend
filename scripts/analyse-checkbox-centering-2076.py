@@ -91,9 +91,14 @@ scores.sort(key=lambda score: score["mean_absolute_horizontal_error_css_pixels"]
 
 score_by_variant = {score["variant"]: score for score in scores}
 candidate_name = "candidate-rem-minus-0.03125"
+historical_name = "legacy-pre-v10.6"
 candidate_score = score_by_variant[candidate_name]
 current_score = score_by_variant["current"]
-best_score = scores[0]
+historical_score = score_by_variant[historical_name]
+eligible_scores = [
+    score for score in scores if score["variant"] != historical_name
+]
+best_eligible_score = eligible_scores[0]
 
 forced_colours_ok = all(
     state["opacity"] == "1"
@@ -107,9 +112,13 @@ forced_colours_ok = all(
 
 verdict = {
     "candidate": candidate_name,
-    "candidate_is_best_or_tied": (
+    "candidate_is_best_eligible_fix_or_tied": (
         candidate_score["mean_absolute_horizontal_error_css_pixels"]
-        <= best_score["mean_absolute_horizontal_error_css_pixels"] + 1e-9
+        <= best_eligible_score["mean_absolute_horizontal_error_css_pixels"] + 1e-9
+    ),
+    "candidate_within_historical_reference_tolerance": (
+        candidate_score["mean_absolute_horizontal_error_css_pixels"]
+        <= historical_score["mean_absolute_horizontal_error_css_pixels"] + 0.05
     ),
     "candidate_improves_current": (
         candidate_score["mean_absolute_horizontal_error_css_pixels"]
@@ -123,7 +132,8 @@ verdict = {
 }
 verdict["pass"] = all(
     [
-        verdict["candidate_is_best_or_tied"],
+        verdict["candidate_is_best_eligible_fix_or_tied"],
+        verdict["candidate_within_historical_reference_tolerance"],
         verdict["candidate_improves_current"],
         verdict["candidate_max_error_within_half_css_pixel"],
         verdict["forced_colours_check_mark_remains_rendered"],
@@ -158,6 +168,8 @@ summary.extend(
         "The WebKit result is an approximation of Safari. DPR values are browser-context emulation on the named operating system, not proof of physical monitor scaling.",
         "The 200% text-size scenario changes the root font size from 16px to 32px so the rem-based correction is evaluated under text resizing.",
         "Forced-colours screenshots and computed-style records verify that the selected mark remains rendered.",
+        "The pre-v10.6 rule is retained as a historical control but excluded from eligible fixes because restoring it would reverse the transform-based Windows 125% correction from #2051.",
+        "The candidate must be the best eligible fix and remain within 0.05 CSS pixels mean error of the historical control.",
         "",
     ]
 )
