@@ -1,0 +1,126 @@
+name: Finalize small checkbox alignment fix
+
+on:
+  push:
+    branches:
+      - automation/finalize-checkbox-alignment-2076
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout clean contribution branch
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: fix/small-checkbox-checkmark-alignment-2076
+          fetch-depth: 0
+
+      - name: Verify support branch starting point
+        run: |
+          test "$(git rev-parse HEAD)" = "ee965156dbd21d2cb74edb98dfb9b3ecc606c71f"
+          test -z "$(git status --porcelain)"
+
+      - name: Apply alignment correction and changelog entry
+        run: |
+          python <<'PY'
+          from pathlib import Path
+
+          scss_path = Path(
+              "packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss"
+          )
+          scss = scss_path.read_text(encoding="utf-8")
+          old = (
+              "left: $check-mark-width + "
+              "nhsuk-px-to-rem($nhsuk-checkboxes-offset + 1px);"
+          )
+          new = (
+              "left: $check-mark-width + "
+              "nhsuk-px-to-rem($nhsuk-checkboxes-offset + 0.5px);"
+          )
+          if scss.count(old) != 1:
+              raise SystemExit("Expected exactly one small-checkbox +1px adjustment")
+          scss_path.write_text(scss.replace(old, new, 1), encoding="utf-8")
+
+          changelog_path = Path("CHANGELOG.md")
+          changelog = changelog_path.read_text(encoding="utf-8")
+          marker = "# NHS.UK frontend Changelog\n\n"
+          entry = (
+              "## Unreleased\n\n"
+              "### :wrench: **Fixes**\n\n"
+              "- Improved check mark alignment for small checkboxes at higher "
+              "display scale factors.\n\n"
+          )
+          if not changelog.startswith(marker):
+              raise SystemExit("Unexpected changelog heading")
+          if changelog.startswith(marker + "## Unreleased"):
+              raise SystemExit("Unreleased section already exists")
+          changelog_path.write_text(
+              marker + entry + changelog[len(marker):], encoding="utf-8"
+          )
+          PY
+
+      - name: Verify contribution scope
+        run: |
+          expected=$(printf '%s\n' \
+            CHANGELOG.md \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss)
+          actual=$(git diff --name-only | sort)
+          test "$actual" = "$(printf '%s\n' "$expected" | sort)"
+          git diff --check
+          grep -Fq \
+            'nhsuk-px-to-rem($nhsuk-checkboxes-offset + 0.5px)' \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss
+          ! grep -Fq \
+            'nhsuk-px-to-rem($nhsuk-checkboxes-offset + 1px)' \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss
+
+      - name: Setup Node
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+
+      - name: Install Puppeteer Chrome
+        run: npm run install:puppeteer
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Run JavaScript test suite
+        run: npm run test:js -- --runInBand
+
+      - name: Commit and push clean contribution
+        run: |
+          git config user.name "Ayobami Haastrup"
+          git config user.email "47716486+AyobamiH@users.noreply.github.com"
+          git add \
+            CHANGELOG.md \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss
+          git commit \
+            -m "Fix small checkbox check mark alignment" \
+            -m "Closes #2076"
+          test "$(git rev-list --count origin/support/10.x..HEAD)" -eq 1
+          git push origin HEAD:fix/small-checkbox-checkmark-alignment-2076
+
+      - name: Confirm clean final state
+        run: |
+          test -z "$(git status --porcelain)"
+          test "$(git rev-list --count origin/support/10.x..HEAD)" -eq 1
+          expected=$(printf '%s\n' \
+            CHANGELOG.md \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss)
+          actual=$(git diff --name-only origin/support/10.x...HEAD | sort)
+          test "$actual" = "$(printf '%s\n' "$expected" | sort)"
