@@ -113,7 +113,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: checkbox-review-app-build
-          path: .
+          path: packages
 
       - name: Start review app
         run: |
