@@ -1,0 +1,1658 @@
+[
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      19,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-default-text-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      12,
+      10,
+      35,
+      33
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      36,
+      33
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      23,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      23,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      36,
+      33
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.4,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-chromium-default-text-dpr-1-25-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      15,
+      12,
+      44,
+      41
+    ],
+    "check_mark_box": [
+      22,
+      21,
+      37,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.4
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      28,
+      26,
+      45,
+      40
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.6666666666666666,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      45,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.3333333333333333,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-chromium-default-text-dpr-1-5-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      18,
+      15,
+      53,
+      50
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      44,
+      40
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.3333333333333333
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.25,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      35,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.25,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-default-text-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      37,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      60,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 1,
+    "filename": "macos-chromium-text-200-percent-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      24,
+      20,
+      71,
+      67
+    ],
+    "check_mark_box": [
+      36,
+      33,
+      59,
+      53
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      71,
+      68,
+      120,
+      108
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      74,
+      66,
+      122,
+      107
+    ],
+    "horizontal_error_device_pixels": 2.5,
+    "horizontal_error_css_pixels": 1.25,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      73,
+      66,
+      122,
+      107
+    ],
+    "horizontal_error_device_pixels": 2.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      73,
+      66,
+      121,
+      107
+    ],
+    "horizontal_error_device_pixels": 1.5,
+    "horizontal_error_css_pixels": 0.75,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      72,
+      66,
+      121,
+      107
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-chromium",
+    "deviceScaleFactor": 2,
+    "filename": "macos-chromium-text-200-percent-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      48,
+      40,
+      143,
+      135
+    ],
+    "check_mark_box": [
+      72,
+      66,
+      120,
+      107
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.25,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      12,
+      11,
+      35,
+      34
+    ],
+    "check_mark_box": [
+      18,
+      18,
+      29,
+      27
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      12,
+      11,
+      35,
+      34
+    ],
+    "check_mark_box": [
+      19,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -1.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      12,
+      11,
+      35,
+      34
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -1.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      12,
+      11,
+      35,
+      34
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -1.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      12,
+      11,
+      35,
+      34
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -1.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      12,
+      11,
+      35,
+      34
+    ],
+    "check_mark_box": [
+      18,
+      17,
+      29,
+      26
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -1.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      15,
+      14,
+      44,
+      43
+    ],
+    "check_mark_box": [
+      22,
+      23,
+      37,
+      34
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      15,
+      14,
+      44,
+      43
+    ],
+    "check_mark_box": [
+      23,
+      22,
+      36,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.8
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      15,
+      14,
+      44,
+      43
+    ],
+    "check_mark_box": [
+      23,
+      22,
+      36,
+      33
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.8
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      15,
+      14,
+      44,
+      43
+    ],
+    "check_mark_box": [
+      22,
+      22,
+      36,
+      34
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.4,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.4
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      15,
+      14,
+      44,
+      43
+    ],
+    "check_mark_box": [
+      22,
+      22,
+      35,
+      34
+    ],
+    "horizontal_error_device_pixels": -1.0,
+    "horizontal_error_css_pixels": -0.8,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.4
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.25,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-25-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      15,
+      14,
+      44,
+      43
+    ],
+    "check_mark_box": [
+      22,
+      22,
+      36,
+      34
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.4,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.4
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      18,
+      17,
+      53,
+      51
+    ],
+    "check_mark_box": [
+      26,
+      27,
+      44,
+      41
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.3333333333333333,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      18,
+      17,
+      53,
+      51
+    ],
+    "check_mark_box": [
+      28,
+      27,
+      45,
+      41
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.6666666666666666,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      18,
+      17,
+      53,
+      51
+    ],
+    "check_mark_box": [
+      28,
+      27,
+      45,
+      41
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.6666666666666666,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      18,
+      17,
+      53,
+      51
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      45,
+      41
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.3333333333333333,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.3333333333333333
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      18,
+      17,
+      53,
+      51
+    ],
+    "check_mark_box": [
+      27,
+      27,
+      44,
+      41
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.0,
+    "vertical_error_css_pixels": 0.0
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1.5,
+    "filename": "macos-webkit-approximation-default-text-dpr-1-5-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      18,
+      17,
+      53,
+      51
+    ],
+    "check_mark_box": [
+      27,
+      26,
+      45,
+      41
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.3333333333333333,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.3333333333333333
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "default-text",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      24,
+      22,
+      71,
+      69
+    ],
+    "check_mark_box": [
+      36,
+      36,
+      59,
+      56
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-current.png",
+    "scenario": "default-text",
+    "variant": "current",
+    "checkbox_box": [
+      24,
+      22,
+      71,
+      69
+    ],
+    "check_mark_box": [
+      37,
+      35,
+      60,
+      55
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.25
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      24,
+      22,
+      71,
+      69
+    ],
+    "check_mark_box": [
+      36,
+      35,
+      60,
+      55
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.25,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.25
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      24,
+      22,
+      71,
+      69
+    ],
+    "check_mark_box": [
+      36,
+      35,
+      59,
+      55
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.25
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "default-text",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      24,
+      22,
+      71,
+      69
+    ],
+    "check_mark_box": [
+      35,
+      35,
+      59,
+      55
+    ],
+    "horizontal_error_device_pixels": -0.5,
+    "horizontal_error_css_pixels": -0.25,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.25
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-default-text-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "default-text",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      24,
+      22,
+      71,
+      69
+    ],
+    "check_mark_box": [
+      36,
+      35,
+      59,
+      55
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.25
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      24,
+      21,
+      71,
+      68
+    ],
+    "check_mark_box": [
+      36,
+      35,
+      59,
+      55
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current",
+    "checkbox_box": [
+      24,
+      21,
+      71,
+      68
+    ],
+    "check_mark_box": [
+      37,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      24,
+      21,
+      71,
+      68
+    ],
+    "check_mark_box": [
+      37,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      24,
+      21,
+      71,
+      68
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      24,
+      21,
+      71,
+      68
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      60,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 1,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-1-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      24,
+      21,
+      71,
+      68
+    ],
+    "check_mark_box": [
+      36,
+      34,
+      59,
+      54
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": -0.5,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-legacy-pre-v10.6.png",
+    "scenario": "text-200-percent",
+    "variant": "legacy-pre-v10.6",
+    "checkbox_box": [
+      48,
+      42,
+      143,
+      137
+    ],
+    "check_mark_box": [
+      71,
+      70,
+      120,
+      110
+    ],
+    "horizontal_error_device_pixels": 0.0,
+    "horizontal_error_css_pixels": 0.0,
+    "vertical_error_device_pixels": 0.5,
+    "vertical_error_css_pixels": 0.25
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-current.png",
+    "scenario": "text-200-percent",
+    "variant": "current",
+    "checkbox_box": [
+      48,
+      42,
+      143,
+      137
+    ],
+    "check_mark_box": [
+      74,
+      68,
+      122,
+      109
+    ],
+    "horizontal_error_device_pixels": 2.5,
+    "horizontal_error_css_pixels": 1.25,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-fixed-minus-0.25px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.25px",
+    "checkbox_box": [
+      48,
+      42,
+      143,
+      137
+    ],
+    "check_mark_box": [
+      73,
+      68,
+      122,
+      109
+    ],
+    "horizontal_error_device_pixels": 2.0,
+    "horizontal_error_css_pixels": 1.0,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-fixed-minus-0.5px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.5px",
+    "checkbox_box": [
+      48,
+      42,
+      143,
+      137
+    ],
+    "check_mark_box": [
+      73,
+      68,
+      121,
+      109
+    ],
+    "horizontal_error_device_pixels": 1.5,
+    "horizontal_error_css_pixels": 0.75,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-fixed-minus-0.75px.png",
+    "scenario": "text-200-percent",
+    "variant": "fixed-minus-0.75px",
+    "checkbox_box": [
+      48,
+      42,
+      143,
+      137
+    ],
+    "check_mark_box": [
+      72,
+      68,
+      121,
+      109
+    ],
+    "horizontal_error_device_pixels": 1.0,
+    "horizontal_error_css_pixels": 0.5,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  },
+  {
+    "browser": "macos-webkit-approximation",
+    "deviceScaleFactor": 2,
+    "filename": "macos-webkit-approximation-text-200-percent-dpr-2-candidate-rem-minus-0.03125.png",
+    "scenario": "text-200-percent",
+    "variant": "candidate-rem-minus-0.03125",
+    "checkbox_box": [
+      48,
+      42,
+      143,
+      137
+    ],
+    "check_mark_box": [
+      72,
+      68,
+      120,
+      109
+    ],
+    "horizontal_error_device_pixels": 0.5,
+    "horizontal_error_css_pixels": 0.25,
+    "vertical_error_device_pixels": -1.0,
+    "vertical_error_css_pixels": -0.5
+  }
+]
