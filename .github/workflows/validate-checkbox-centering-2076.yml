@@ -1,0 +1,167 @@
+name: Validate checkbox centring for issue 2076
+
+on:
+  push:
+    branches:
+      - automation/validate-checkbox-centering-2076
+    paths-ignore:
+      - evidence/2076/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-checkbox-centering-2076
+  cancel-in-progress: true
+
+jobs:
+  macos-browsers:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+
+      - name: Install Chromium and WebKit
+        run: |
+          npm run install:playwright
+          npx playwright install webkit
+
+      - name: Build
+        run: npm run build
+
+      - name: Start review app
+        run: |
+          npm start --workspace @nhsuk/frontend-review > "$RUNNER_TEMP/review-app.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/review-app.pid"
+          npx wait-on http-get://127.0.0.1:3000/nhsuk-frontend/components/checkboxes/small-with-pre-checked-values/ --timeout 120000
+
+      - name: Capture centring matrix
+        run: node scripts/capture-checkbox-centering-2076.mjs
+        env:
+          BROWSER_MATRIX: >-
+            [{"name":"macos-chromium","engine":"chromium"},{"name":"macos-webkit-approximation","engine":"webkit"}]
+          EVIDENCE_DIR: ${{ runner.temp }}/checkbox-centering-macos
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Analyse centring matrix
+        run: |
+          python -m pip install pillow
+          python scripts/analyse-checkbox-centering-2076.py
+        env:
+          EVIDENCE_DIR: ${{ runner.temp }}/checkbox-centering-macos
+
+      - name: Stop review app
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/review-app.pid"; then
+            kill "$(cat "$RUNNER_TEMP/review-app.pid")" || true
+          fi
+
+      - name: Upload macOS evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-centering-macos
+          path: ${{ runner.temp }}/checkbox-centering-macos
+          if-no-files-found: error
+
+  windows-browsers:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+
+      - name: Build
+        run: npm run build
+
+      - name: Start review app
+        run: |
+          npm start --workspace @nhsuk/frontend-review > "$RUNNER_TEMP/review-app.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/review-app.pid"
+          npx wait-on http-get://127.0.0.1:3000/nhsuk-frontend/components/checkboxes/small-with-pre-checked-values/ --timeout 120000
+
+      - name: Capture centring matrix in installed Chrome and Edge
+        run: node scripts/capture-checkbox-centering-2076.mjs
+        env:
+          BROWSER_MATRIX: >-
+            [{"name":"windows-chrome","engine":"chromium","channel":"chrome"},{"name":"windows-edge","engine":"chromium","channel":"msedge"}]
+          EVIDENCE_DIR: ${{ runner.temp }}/checkbox-centering-windows
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Analyse centring matrix
+        run: |
+          python -m pip install pillow
+          python scripts/analyse-checkbox-centering-2076.py
+        env:
+          EVIDENCE_DIR: ${{ runner.temp }}/checkbox-centering-windows
+
+      - name: Stop review app
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/review-app.pid"; then
+            kill "$(cat "$RUNNER_TEMP/review-app.pid")" || true
+          fi
+
+      - name: Upload Windows evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-centering-windows
+          path: ${{ runner.temp }}/checkbox-centering-windows
+          if-no-files-found: error
+
+  publish-evidence:
+    if: always()
+    needs:
+      - macos-browsers
+      - windows-browsers
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: checkbox-centering-*
+          path: evidence/2076
+
+      - name: Persist evidence on the validation branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/2076
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Persist checkbox centring evidence [skip ci]"
+          git push
