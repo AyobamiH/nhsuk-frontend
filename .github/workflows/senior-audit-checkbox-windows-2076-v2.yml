@@ -1,0 +1,366 @@
+name: Senior audit small checkbox alignment on Windows v2
+
+on:
+  push:
+    branches:
+      - automation/senior-audit-checkbox-windows-2076-v2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-browser-evidence:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: fix/small-checkbox-checkmark-alignment-2076
+          fetch-depth: 0
+
+      - name: Verify candidate commit
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "fb0f65fb33728a7e08b86f75b2d78b941478e4a5"
+          test -z "$(git status --porcelain)"
+
+      - name: Setup Node
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        shell: pwsh
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+        run: npm ci
+
+      - name: Build standalone checkbox page from candidate Sass
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path .tmp/site | Out-Null
+          npm exec -- sass `
+            packages/nhsuk-frontend/src/nhsuk/index.scss `
+            .tmp/site/nhsuk.css `
+            --load-path=packages/nhsuk-frontend/src `
+            --load-path=node_modules `
+            --style=expanded `
+            --no-source-map
+
+          @'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <title>Small checkbox alignment audit</title>
+              <link rel="stylesheet" href="nhsuk.css">
+            </head>
+            <body>
+              <main class="nhsuk-width-container" style="padding-top: 40px">
+                <div class="nhsuk-form-group">
+                  <fieldset class="nhsuk-fieldset">
+                    <legend class="nhsuk-fieldset__legend">Select an option</legend>
+                    <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+                      <div class="nhsuk-checkboxes__item">
+                        <input class="nhsuk-checkboxes__input" id="audit-checkbox" name="audit-checkbox" type="checkbox" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="audit-checkbox">Option</label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </main>
+            </body>
+          </html>
+          '@ | Set-Content -Path .tmp/site/index.html
+
+          Test-Path .tmp/site/nhsuk.css
+          Test-Path .tmp/site/index.html
+
+      - name: Capture Chrome and Edge evidence
+        shell: pwsh
+        run: |
+          $evidence = Join-Path $env:RUNNER_TEMP "checkbox-windows-evidence"
+          New-Item -ItemType Directory -Force -Path $evidence | Out-Null
+
+          @'
+          import fs from "node:fs/promises"
+          import path from "node:path"
+          import { pathToFileURL } from "node:url"
+          import { chromium } from "playwright-core"
+
+          const outputDir = process.env.EVIDENCE_DIR
+          const url = pathToFileURL(path.resolve(".tmp/site/index.html")).href
+          const selector =
+            ".nhsuk-checkboxes--small .nhsuk-checkboxes__input:checked"
+          const variants = [
+            {
+              name: "current",
+              transform: "rotate(-45deg) translate(-50%, -50%)"
+            },
+            {
+              name: "minus-0-25",
+              transform:
+                "translateX(-0.25px) rotate(-45deg) translate(-50%, -50%)"
+            },
+            {
+              name: "candidate-minus-0-5",
+              transform:
+                "translateX(-0.5px) rotate(-45deg) translate(-50%, -50%)"
+            }
+          ]
+          const scaleFactors = [1, 1.25, 1.5, 2]
+          const channels = ["chrome", "msedge"]
+          const records = []
+
+          await fs.mkdir(outputDir, { recursive: true })
+
+          for (const channel of channels) {
+            const browser = await chromium.launch({ channel, headless: true })
+            try {
+              for (const deviceScaleFactor of scaleFactors) {
+                const context = await browser.newContext({
+                  deviceScaleFactor,
+                  viewport: { width: 1200, height: 800 }
+                })
+                const page = await context.newPage()
+                await page.goto(url, { waitUntil: "load" })
+                const input = page.locator(selector).first()
+                if ((await input.count()) !== 1) {
+                  throw new Error(`Expected one checked small checkbox in ${channel}`)
+                }
+                await input.focus()
+                const inputBox = await input.boundingBox()
+                if (!inputBox) {
+                  throw new Error("Small checkbox input has no bounding box")
+                }
+
+                for (const variant of variants) {
+                  const computed = await page.evaluate(({ transform }) => {
+                    let style = document.querySelector("#senior-alignment-audit")
+                    if (!style) {
+                      style = document.createElement("style")
+                      style.id = "senior-alignment-audit"
+                      document.head.append(style)
+                    }
+                    style.textContent = `
+                      .nhsuk-checkboxes--small
+                      .nhsuk-checkboxes__label::after {
+                        transform: ${transform} !important;
+                        border-color: #e60000 !important;
+                      }
+                    `
+                    const label = document.querySelector(
+                      ".nhsuk-checkboxes--small .nhsuk-checkboxes__label"
+                    )
+                    return getComputedStyle(label, "::after").transform
+                  }, variant)
+                  await page.evaluate(() => new Promise(requestAnimationFrame))
+
+                  const filename =
+                    `${channel}-dpr-${String(deviceScaleFactor).replace(".", "-")}-` +
+                    `${variant.name}.png`
+                  await page.screenshot({
+                    path: path.join(outputDir, filename),
+                    clip: {
+                      x: Math.max(0, Math.floor(inputBox.x)),
+                      y: Math.max(0, Math.floor(inputBox.y)),
+                      width: Math.ceil(inputBox.width),
+                      height: Math.ceil(inputBox.height)
+                    }
+                  })
+                  records.push({
+                    channel,
+                    computedTransform: computed,
+                    deviceScaleFactor,
+                    filename,
+                    variant: variant.name
+                  })
+                }
+                await context.close()
+              }
+            } finally {
+              await browser.close()
+            }
+          }
+
+          await fs.writeFile(
+            path.join(outputDir, "records.json"),
+            JSON.stringify(records, null, 2)
+          )
+          '@ | Set-Content -Path .tmp/capture-windows-evidence.mjs
+
+          $env:EVIDENCE_DIR = $evidence
+          node .tmp/capture-windows-evidence.mjs
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Measure absolute alignment and build comparison
+        shell: pwsh
+        run: |
+          python -m pip install pillow
+          $evidence = Join-Path $env:RUNNER_TEMP "checkbox-windows-evidence"
+
+          @'
+          import json
+          import os
+          from collections import defaultdict
+          from pathlib import Path
+
+          from PIL import Image, ImageDraw
+
+          evidence_dir = Path(os.environ["EVIDENCE_DIR"])
+          records = json.loads((evidence_dir / "records.json").read_text())
+          measurements = []
+          images = {}
+
+          def bbox_and_centroid(image, predicate):
+              points = []
+              for y in range(image.height):
+                  for x in range(image.width):
+                      if predicate(*image.getpixel((x, y))):
+                          points.append((x, y))
+              if not points:
+                  raise RuntimeError("Expected segmented pixels")
+              xs = [x for x, _ in points]
+              ys = [y for _, y in points]
+              return {
+                  "bbox": [min(xs), min(ys), max(xs), max(ys)],
+                  "centroid": [sum(xs) / len(xs), sum(ys) / len(ys)],
+                  "count": len(points),
+              }
+
+          for record in records:
+              image = Image.open(evidence_dir / record["filename"]).convert("RGB")
+              images[(record["channel"], record["deviceScaleFactor"], record["variant"])] = image
+              border = bbox_and_centroid(
+                  image,
+                  lambda red, green, blue: red < 80 and green < 90 and blue < 100,
+              )
+              check = bbox_and_centroid(
+                  image,
+                  lambda red, green, blue: red > 180 and green < 120 and blue < 120,
+              )
+              border_bbox_center_x = (border["bbox"][0] + border["bbox"][2]) / 2
+              check_bbox_center_x = (check["bbox"][0] + check["bbox"][2]) / 2
+              measurements.append(
+                  {
+                      **record,
+                      "border": border,
+                      "check": check,
+                      "bbox_center_error_css_pixels": (
+                          check_bbox_center_x - border_bbox_center_x
+                      ) / record["deviceScaleFactor"],
+                      "centroid_error_css_pixels": (
+                          check["centroid"][0] - border["centroid"][0]
+                      ) / record["deviceScaleFactor"],
+                  }
+              )
+
+          scores = defaultdict(list)
+          max_errors = defaultdict(float)
+          for measurement in measurements:
+              error = abs(measurement["centroid_error_css_pixels"])
+              scores[measurement["variant"]].append(error)
+              max_errors[measurement["variant"]] = max(
+                  max_errors[measurement["variant"]], error
+              )
+          summary = {
+              variant: {
+                  "mean_absolute_centroid_error_css_pixels": sum(values) / len(values),
+                  "max_absolute_centroid_error_css_pixels": max_errors[variant],
+              }
+              for variant, values in scores.items()
+          }
+
+          result = {"summary": summary, "measurements": measurements}
+          (evidence_dir / "metrics.json").write_text(
+              json.dumps(result, indent=2), encoding="utf-8"
+          )
+
+          channels = ["chrome", "msedge"]
+          factors = [1, 1.25, 1.5, 2]
+          variants = ["current", "minus-0-25", "candidate-minus-0-5"]
+          cell_width = max(image.width for image in images.values()) + 44
+          cell_height = max(image.height for image in images.values()) + 44
+          canvas = Image.new(
+              "RGB",
+              (cell_width * len(variants), cell_height * len(channels) * len(factors)),
+              "white",
+          )
+          draw = ImageDraw.Draw(canvas)
+          lookup = {
+              (m["channel"], m["deviceScaleFactor"], m["variant"]): m
+              for m in measurements
+          }
+          row = 0
+          for channel in channels:
+              for factor in factors:
+                  for column, variant in enumerate(variants):
+                      image = images[(channel, factor, variant)]
+                      x = column * cell_width + 12
+                      y = row * cell_height + 12
+                      canvas.paste(image, (x, y))
+                      metric = lookup[(channel, factor, variant)]
+                      label = (
+                          f"{channel} DPR {factor} {variant}\n"
+                          f"centroid {metric['centroid_error_css_pixels']:+.3f}px"
+                      )
+                      draw.multiline_text(
+                          (column * cell_width + 3, y + image.height + 3),
+                          label,
+                          fill="black",
+                          spacing=1,
+                      )
+                  row += 1
+          canvas.save(evidence_dir / "windows-comparison.png")
+
+          lines = [
+              "# Windows Chrome and Edge alignment audit",
+              "",
+              "## Aggregate absolute centroid error",
+              "",
+              "| Variant | Mean CSS px | Maximum CSS px |",
+              "| --- | ---: | ---: |",
+          ]
+          for variant in variants:
+              lines.append(
+                  f"| `{variant}` | "
+                  f"{summary[variant]['mean_absolute_centroid_error_css_pixels']:.3f} | "
+                  f"{summary[variant]['max_absolute_centroid_error_css_pixels']:.3f} |"
+              )
+          lines.extend([
+              "",
+              "The metric compares the red check-mark pixel centroid with the dark checkbox-border pixel centroid.",
+              "",
+          ])
+          (evidence_dir / "summary.md").write_text(
+              "\n".join(lines), encoding="utf-8"
+          )
+          print(json.dumps(result, indent=2))
+          '@ | Set-Content -Path .tmp/analyse-windows-evidence.py
+
+          $env:EVIDENCE_DIR = $evidence
+          python .tmp/analyse-windows-evidence.py
+
+      - name: Upload Windows evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-windows-senior-audit-v2
+          path: ${{ runner.temp }}/checkbox-windows-evidence
+          if-no-files-found: error
+
+      - name: Cleanup temporary files
+        if: always()
+        shell: pwsh
+        run: Remove-Item -Recurse -Force .tmp -ErrorAction SilentlyContinue
+
+      - name: Confirm candidate branch was not modified
+        shell: bash
+        run: test -z "$(git status --porcelain --untracked-files=no)"
