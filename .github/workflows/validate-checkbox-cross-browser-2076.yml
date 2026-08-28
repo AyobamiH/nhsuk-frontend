@@ -1,0 +1,261 @@
+name: Validate checkbox alignment across browsers
+
+on:
+  push:
+    branches:
+      - automation/validate-checkbox-cross-browser-2076
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: ${{ matrix.label }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            browser: chromium
+            label: Chromium on macOS
+          - os: macos-latest
+            browser: webkit
+            label: WebKit on macOS
+          - os: windows-latest
+            browser: chromium
+            label: Chromium on Windows
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout clean contribution
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: fix/small-checkbox-checkmark-alignment-2076
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install browser
+        run: npx playwright install ${{ matrix.browser }}
+
+      - name: Capture current, candidate and pre-v10.6 positions
+        shell: bash
+        env:
+          BROWSER_NAME: ${{ matrix.browser }}
+          OUTPUT_DIR: ${{ runner.temp }}/checkbox-2076-${{ matrix.browser }}
+        run: |
+          cat > "$RUNNER_TEMP/validate-checkbox-cross-browser-2076.mjs" <<'JS'
+          import fs from 'node:fs/promises'
+          import path from 'node:path'
+          import { chromium, webkit } from 'playwright-core'
+
+          const engines = { chromium, webkit }
+          const browserName = process.env.BROWSER_NAME
+          const browserType = engines[browserName]
+          if (!browserType) throw new Error(`Unsupported browser: ${browserName}`)
+
+          const output = process.env.OUTPUT_DIR
+          const css = await fs.readFile(
+            'packages/nhsuk-frontend/dist/nhsuk.css',
+            'utf8'
+          )
+          await fs.mkdir(output, { recursive: true })
+
+          const variants = {
+            legacy: `
+              .nhsuk-checkboxes--small .nhsuk-checkboxes__label::after {
+                top: 18px !important;
+                left: 8px !important;
+                transform: rotate(-45deg) !important;
+              }
+            `,
+            current: `
+              .nhsuk-checkboxes--small .nhsuk-checkboxes__label::after {
+                left: 15px !important;
+              }
+            `,
+            candidate: ''
+          }
+          const dprs = [1, 1.25, 1.5, 2]
+          const browser = await browserType.launch({
+            args: browserName === 'chromium'
+              ? [
+                  '--disable-skia-graphite',
+                  '--disable-skia-runtime-opts',
+                  '--font-render-hinting=medium'
+                ]
+              : []
+          })
+          const computed = {}
+
+          for (const dpr of dprs) {
+            computed[dpr] = {}
+            for (const [variant, override] of Object.entries(variants)) {
+              const context = await browser.newContext({
+                viewport: { width: 420, height: 220 },
+                deviceScaleFactor: dpr
+              })
+              const page = await context.newPage()
+              await page.setContent(`<!doctype html>
+                <html>
+                  <head>
+                    <style>${css}</style>
+                    <style>
+                      body { margin: 60px; background: white; }
+                      ${override}
+                    </style>
+                  </head>
+                  <body class="nhsuk-frontend-supported">
+                    <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+                      <div class="nhsuk-checkboxes__item" id="item">
+                        <input class="nhsuk-checkboxes__input" id="choice" name="choice" type="checkbox" value="yes" checked>
+                        <label class="nhsuk-label nhsuk-checkboxes__label" for="choice">Example</label>
+                      </div>
+                    </div>
+                  </body>
+                </html>`)
+              const box = await page.locator('#item').boundingBox()
+              if (!box) throw new Error('Checkbox item has no bounding box')
+              computed[dpr][variant] = await page.locator('label').evaluate((label) => {
+                const style = getComputedStyle(label, '::after')
+                return {
+                  left: style.left,
+                  top: style.top,
+                  width: style.width,
+                  height: style.height,
+                  transform: style.transform
+                }
+              })
+
+              await page.locator('#choice').focus()
+              const suffix = String(dpr).replace('.', '_')
+              await page.screenshot({
+                path: path.join(output, `${variant}-focus-dpr-${suffix}.png`),
+                clip: {
+                  x: box.x - 14,
+                  y: box.y - 14,
+                  width: 58,
+                  height: 58
+                }
+              })
+
+              await page.addStyleTag({ content: `
+                .nhsuk-checkboxes__label::before {
+                  border-color: transparent !important;
+                  outline: 0 !important;
+                  box-shadow: none !important;
+                }
+                .nhsuk-checkboxes__label { font-size: 0 !important; }
+              ` })
+              await page.locator('#choice').blur()
+              await page.screenshot({
+                path: path.join(output, `${variant}-mark-dpr-${suffix}.png`),
+                clip: {
+                  x: box.x - 2,
+                  y: box.y - 2,
+                  width: 36,
+                  height: 40
+                }
+              })
+              await context.close()
+            }
+          }
+
+          await browser.close()
+          await fs.writeFile(
+            path.join(output, 'computed.json'),
+            JSON.stringify(computed, null, 2)
+          )
+          JS
+          node "$RUNNER_TEMP/validate-checkbox-cross-browser-2076.mjs"
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Compare rasterised positions
+        shell: bash
+        env:
+          EVIDENCE_DIR: ${{ runner.temp }}/checkbox-2076-${{ matrix.browser }}
+        run: |
+          python -m pip install --quiet pillow
+          python <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageChops, ImageDraw
+          import json
+          import os
+
+          root = Path(os.environ['EVIDENCE_DIR'])
+          dprs = ['1', '1_25', '1_5', '2']
+
+          def difference(a, b):
+              left = Image.open(a).convert('RGBA')
+              right = Image.open(b).convert('RGBA')
+              diff = ImageChops.difference(left, right).convert('RGB')
+              return sum(1 for pixel in diff.getdata() if pixel != (0, 0, 0))
+
+          metrics = {}
+          for dpr in dprs:
+              metrics[dpr] = {
+                  'candidate_vs_legacy': difference(
+                      root / f'candidate-mark-dpr-{dpr}.png',
+                      root / f'legacy-mark-dpr-{dpr}.png'
+                  ),
+                  'current_vs_legacy': difference(
+                      root / f'current-mark-dpr-{dpr}.png',
+                      root / f'legacy-mark-dpr-{dpr}.png'
+                  ),
+                  'candidate_vs_current': difference(
+                      root / f'candidate-mark-dpr-{dpr}.png',
+                      root / f'current-mark-dpr-{dpr}.png'
+                  )
+              }
+
+          print(json.dumps(metrics, indent=2))
+          assert metrics['2']['candidate_vs_legacy'] < metrics['2']['current_vs_legacy']
+          assert sum(metrics[d]['candidate_vs_legacy'] for d in ['1_25', '1_5', '2']) < sum(
+              metrics[d]['current_vs_legacy'] for d in ['1_25', '1_5', '2']
+          )
+
+          computed = json.loads((root / 'computed.json').read_text())
+          assert computed['2']['candidate']['left'] == '14.5px'
+          assert computed['2']['current']['left'] == '15px'
+
+          images = []
+          for variant in ['legacy', 'current', 'candidate']:
+              images.append(
+                  (variant, Image.open(root / f'{variant}-focus-dpr-2.png').convert('RGB'))
+              )
+          width = sum(image.width for _, image in images)
+          height = max(image.height for _, image in images) + 32
+          sheet = Image.new('RGB', (width, height), 'white')
+          draw = ImageDraw.Draw(sheet)
+          x = 0
+          for label, image in images:
+              sheet.paste(image, (x, 32))
+              draw.text((x + 4, 8), label, fill='black')
+              x += image.width
+          sheet.save(root / 'dpr-2-comparison.png')
+          (root / 'pixel-metrics.json').write_text(json.dumps(metrics, indent=2))
+          PY
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-2076-${{ matrix.os }}-${{ matrix.browser }}
+          path: ${{ runner.temp }}/checkbox-2076-${{ matrix.browser }}/
+          if-no-files-found: warn
