@@ -1,0 +1,466 @@
+name: Implement and validate small checkbox alignment
+
+on:
+  push:
+    branches:
+      - automation/implement-checkbox-alignment-2076
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout clean contribution branch
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: fix/small-checkbox-checkmark-alignment-2076
+          fetch-depth: 0
+
+      - name: Verify support branch starting point
+        run: |
+          test "$(git rev-parse HEAD)" = "ee965156dbd21d2cb74edb98dfb9b3ecc606c71f"
+          test -z "$(git status --porcelain)"
+
+      - name: Apply alignment correction and changelog entry
+        run: |
+          python <<'PY'
+          from pathlib import Path
+
+          scss_path = Path(
+              "packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss"
+          )
+          scss = scss_path.read_text(encoding="utf-8")
+          old = (
+              "left: $check-mark-width + "
+              "nhsuk-px-to-rem($nhsuk-checkboxes-offset + 1px);"
+          )
+          new = (
+              "left: $check-mark-width + "
+              "nhsuk-px-to-rem($nhsuk-checkboxes-offset + 0.5px);"
+          )
+          if scss.count(old) != 1:
+              raise SystemExit("Expected exactly one small-checkbox +1px adjustment")
+          scss_path.write_text(scss.replace(old, new, 1), encoding="utf-8")
+
+          changelog_path = Path("CHANGELOG.md")
+          changelog = changelog_path.read_text(encoding="utf-8")
+          marker = "# NHS.UK frontend Changelog\n\n"
+          if not changelog.startswith(marker):
+              raise SystemExit("Unexpected changelog heading")
+          if changelog.startswith(marker + "## Unreleased"):
+              raise SystemExit("Unreleased section already exists")
+          entry = (
+              "## Unreleased\n\n"
+              "### :wrench: **Fixes**\n\n"
+              "- Improved check mark alignment for small checkboxes at higher "
+              "display scale factors.\n\n"
+          )
+          changelog_path.write_text(
+              marker + entry + changelog[len(marker):],
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Verify contribution scope
+        run: |
+          expected=$(printf '%s\n' \
+            CHANGELOG.md \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss)
+          actual=$(git diff --name-only | sort)
+          test "$actual" = "$(printf '%s\n' "$expected" | sort)"
+          git diff --check
+          grep -Fq \
+            'nhsuk-px-to-rem($nhsuk-checkboxes-offset + 0.5px)' \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss
+          ! grep -Fq \
+            'nhsuk-px-to-rem($nhsuk-checkboxes-offset + 1px)' \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss
+
+      - name: Setup Node
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Run JavaScript test suite
+        run: npm run test:js -- --runInBand
+
+      - name: Commit and push clean contribution
+        run: |
+          git config user.name "Ayobami Haastrup"
+          git config user.email "47716486+AyobamiH@users.noreply.github.com"
+          git add \
+            CHANGELOG.md \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss
+          git commit \
+            -m "Fix small checkbox check mark alignment" \
+            -m "Closes #2076"
+          test "$(git rev-list --count origin/support/10.x..HEAD)" -eq 1
+          git push origin HEAD:fix/small-checkbox-checkmark-alignment-2076
+
+      - name: Confirm clean final state
+        run: |
+          test -z "$(git status --porcelain)"
+          test "$(git rev-list --count origin/support/10.x..HEAD)" -eq 1
+          expected=$(printf '%s\n' \
+            CHANGELOG.md \
+            packages/nhsuk-frontend/src/nhsuk/components/checkboxes/_index.scss)
+          actual=$(git diff --name-only origin/support/10.x...HEAD | sort)
+          test "$actual" = "$(printf '%s\n' "$expected" | sort)"
+
+  visual:
+    needs: implement
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout clean contribution branch
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: fix/small-checkbox-checkmark-alignment-2076
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: true
+
+      - name: Install Playwright Chromium
+        run: npm run install:playwright
+
+      - name: Build
+        run: npm run build
+
+      - name: Start review app
+        run: |
+          npm start --workspace @nhsuk/frontend-review \
+            > "$RUNNER_TEMP/review-app.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/review-app.pid"
+          npx wait-on \
+            http-get://127.0.0.1:3000/nhsuk-frontend/components/checkboxes/small-with-pre-checked-values/ \
+            --timeout 120000
+
+      - name: Capture multi-DPI alignment evidence
+        run: |
+          mkdir -p "$RUNNER_TEMP/checkbox-evidence"
+
+          cat > "$RUNNER_TEMP/capture-checkbox-evidence.mjs" <<'JS'
+          import fs from "node:fs/promises"
+          import path from "node:path"
+          import { chromium } from "playwright-core"
+
+          const outputDir = process.env.EVIDENCE_DIR
+          const url =
+            "http://127.0.0.1:3000/nhsuk-frontend/components/" +
+            "checkboxes/small-with-pre-checked-values/"
+          const selector =
+            ".nhsuk-checkboxes--small .nhsuk-checkboxes__input:checked"
+          const variants = [
+            { name: "current-15", left: 15 },
+            { name: "half-14-5", left: 14.5 },
+            { name: "none-14", left: 14 },
+            { name: "minus-half-13-5", left: 13.5 }
+          ]
+          const scaleFactors = [1, 1.25, 1.5, 2]
+
+          await fs.mkdir(outputDir, { recursive: true })
+
+          const browser = await chromium.launch({
+            headless: true,
+            args: [
+              "--disable-skia-graphite",
+              "--disable-skia-runtime-opts",
+              "--font-render-hinting=medium"
+            ]
+          })
+
+          const records = []
+
+          try {
+            for (const deviceScaleFactor of scaleFactors) {
+              const context = await browser.newContext({
+                deviceScaleFactor,
+                viewport: { width: 1200, height: 800 }
+              })
+              const page = await context.newPage()
+              await page.goto(url, { waitUntil: "networkidle" })
+
+              const input = page.locator(selector).first()
+              if ((await input.count()) !== 1) {
+                throw new Error(`Expected one checked small checkbox at ${url}`)
+              }
+              await input.focus()
+
+              const inputBox = await input.boundingBox()
+              if (!inputBox) {
+                throw new Error("Small checkbox input has no bounding box")
+              }
+
+              for (const variant of variants) {
+                await page.evaluate(
+                  ({ left }) => {
+                    let style = document.querySelector("#alignment-evidence")
+                    if (!style) {
+                      style = document.createElement("style")
+                      style.id = "alignment-evidence"
+                      document.head.append(style)
+                    }
+                    style.textContent = `
+                      .nhsuk-checkboxes--small
+                      .nhsuk-checkboxes__label::after {
+                        left: ${left}px !important;
+                        border-color: #e60000 !important;
+                      }
+                    `
+                  },
+                  variant
+                )
+                await page.evaluate(() => new Promise(requestAnimationFrame))
+
+                const filename =
+                  `dpr-${String(deviceScaleFactor).replace(".", "-")}-` +
+                  `${variant.name}.png`
+                const filepath = path.join(outputDir, filename)
+
+                await page.screenshot({
+                  path: filepath,
+                  clip: {
+                    x: Math.max(0, Math.floor(inputBox.x)),
+                    y: Math.max(0, Math.floor(inputBox.y)),
+                    width: Math.ceil(inputBox.width),
+                    height: Math.ceil(inputBox.height)
+                  }
+                })
+
+                records.push({
+                  deviceScaleFactor,
+                  filename,
+                  left: variant.left,
+                  variant: variant.name
+                })
+              }
+
+              await context.close()
+            }
+          } finally {
+            await browser.close()
+          }
+
+          await fs.writeFile(
+            path.join(outputDir, "capture-records.json"),
+            JSON.stringify(records, null, 2)
+          )
+          JS
+
+          EVIDENCE_DIR="$RUNNER_TEMP/checkbox-evidence" \
+            node "$RUNNER_TEMP/capture-checkbox-evidence.mjs"
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Analyse multi-DPI screenshots
+        run: |
+          python -m pip install pillow
+
+          cat > "$RUNNER_TEMP/analyse-checkbox-evidence.py" <<'PY'
+          import json
+          import os
+          from collections import defaultdict
+          from pathlib import Path
+
+          from PIL import Image, ImageDraw
+
+          evidence_dir = Path(os.environ["EVIDENCE_DIR"])
+          records = json.loads(
+              (evidence_dir / "capture-records.json").read_text(encoding="utf-8")
+          )
+          metrics = []
+          images = {}
+
+          for record in records:
+              image = Image.open(evidence_dir / record["filename"]).convert("RGB")
+              images[(record["deviceScaleFactor"], record["variant"])] = image
+
+              red = []
+              dark = []
+              for y in range(image.height):
+                  for x in range(image.width):
+                      r, g, b = image.getpixel((x, y))
+                      if r > 180 and g < 120 and b < 120:
+                          red.append((x, y))
+                      if r < 80 and g < 90 and b < 100:
+                          dark.append((x, y))
+
+              if not red or not dark:
+                  raise SystemExit(f"Could not segment {record['filename']}")
+
+              red_x = [point[0] for point in red]
+              red_y = [point[1] for point in red]
+              dark_x = [point[0] for point in dark]
+              dark_y = [point[1] for point in dark]
+
+              red_bbox = [
+                  min(red_x),
+                  min(red_y),
+                  max(red_x),
+                  max(red_y),
+              ]
+              dark_bbox = [
+                  min(dark_x),
+                  min(dark_y),
+                  max(dark_x),
+                  max(dark_y),
+              ]
+              red_center_x = (red_bbox[0] + red_bbox[2]) / 2
+              dark_center_x = (dark_bbox[0] + dark_bbox[2]) / 2
+              error_device_pixels = red_center_x - dark_center_x
+              error_css_pixels = (
+                  error_device_pixels / record["deviceScaleFactor"]
+              )
+
+              metrics.append(
+                  {
+                      **record,
+                      "dark_bbox": dark_bbox,
+                      "error_css_pixels": error_css_pixels,
+                      "error_device_pixels": error_device_pixels,
+                      "red_bbox": red_bbox,
+                  }
+              )
+
+          scores = defaultdict(list)
+          for metric in metrics:
+              scores[metric["variant"]].append(
+                  abs(metric["error_css_pixels"])
+              )
+          mean_absolute_error = {
+              variant: sum(values) / len(values)
+              for variant, values in scores.items()
+          }
+
+          result = {
+              "mean_absolute_horizontal_error_css_pixels": mean_absolute_error,
+              "measurements": metrics,
+          }
+          (evidence_dir / "metrics.json").write_text(
+              json.dumps(result, indent=2),
+              encoding="utf-8",
+          )
+
+          variants = [
+              "current-15",
+              "half-14-5",
+              "none-14",
+              "minus-half-13-5",
+          ]
+          factors = [1, 1.25, 1.5, 2]
+          cell_width = max(
+              image.width for image in images.values()
+          ) + 36
+          cell_height = max(
+              image.height for image in images.values()
+          ) + 44
+          canvas = Image.new(
+              "RGB",
+              (cell_width * len(variants), cell_height * len(factors)),
+              "white",
+          )
+          draw = ImageDraw.Draw(canvas)
+
+          metric_lookup = {
+              (metric["deviceScaleFactor"], metric["variant"]): metric
+              for metric in metrics
+          }
+
+          for row, factor in enumerate(factors):
+              for column, variant in enumerate(variants):
+                  image = images[(factor, variant)]
+                  x = column * cell_width + 18
+                  y = row * cell_height + 18
+                  canvas.paste(image, (x, y))
+                  metric = metric_lookup[(factor, variant)]
+                  label = (
+                      f"DPR {factor}  {variant}  "
+                      f"error {metric['error_css_pixels']:+.2f}px"
+                  )
+                  draw.text(
+                      (column * cell_width + 4, y + image.height + 6),
+                      label,
+                      fill="black",
+                  )
+
+          canvas.save(evidence_dir / "checkbox-alignment-comparison.png")
+
+          summary = [
+              "# Small checkbox multi-DPI alignment evidence",
+              "",
+              "| Variant | Mean absolute horizontal error (CSS px) |",
+              "| --- | ---: |",
+          ]
+          for variant in variants:
+              summary.append(
+                  f"| `{variant}` | "
+                  f"{mean_absolute_error[variant]:.3f} |"
+              )
+          summary.extend(
+              [
+                  "",
+                  "Measurements use the red check-mark bounding-box centre "
+                  "relative to the focused checkbox border centre.",
+                  "",
+              ]
+          )
+          (evidence_dir / "summary.md").write_text(
+              "\n".join(summary),
+              encoding="utf-8",
+          )
+
+          print(json.dumps(result, indent=2))
+          PY
+
+          EVIDENCE_DIR="$RUNNER_TEMP/checkbox-evidence" \
+            python "$RUNNER_TEMP/analyse-checkbox-evidence.py"
+
+      - name: Stop review app
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/review-app.pid"; then
+            kill "$(cat "$RUNNER_TEMP/review-app.pid")" || true
+          fi
+
+      - name: Run full visual regression suite
+        run: npm run test:visual --ignore-scripts
+
+      - name: Upload multi-DPI evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: checkbox-alignment-dpi-evidence
+          path: ${{ runner.temp }}/checkbox-evidence
+          if-no-files-found: error
+
+      - name: Confirm contribution branch remains clean
+        run: |
+          test -z "$(git status --porcelain --untracked-files=no)"
